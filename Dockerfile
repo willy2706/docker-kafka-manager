@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04.5
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=en_US.UTF-8 \
@@ -25,6 +25,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 #Sbt
 RUN wget -O - -L --no-check-certificate https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz | tar zx
 RUN ln -s /sbt/bin/sbt /usr/bin/sbt
+RUN sbt about
 
 RUN cd /tmp && wget -O - https://github.com/yahoo/kafka-manager/archive/1.3.1.8.tar.gz | tar zx && \
     cd /tmp/kafka-manager* && \
